@@ -3,7 +3,11 @@ package com.vangroan.botexperiment.view.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.vangroan.botexperiment.graph.BotNode;
 import com.vangroan.botexperiment.view.viewholder.BotVH;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Victor on 2017/02/08.
@@ -11,7 +15,7 @@ import com.vangroan.botexperiment.view.viewholder.BotVH;
 
 public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
-//    private List<BotVH> history = new ArrayList<>();
+    private List<BotNode> history = new ArrayList<>();
 
     public BotHistoryAdapter() {
 
@@ -24,11 +28,11 @@ public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
     @Override
     public void onBindViewHolder(BotVH holder, int position) {
-
+        holder.populate();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return history.size();
     }
 }
