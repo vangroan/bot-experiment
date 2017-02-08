@@ -13,4 +13,8 @@ public class BotNode {
     public boolean hasId() {
         return !StringHelper.isEmpty(id);
     }
+
+    public String getId() {
+        return id;
+    }
 }
