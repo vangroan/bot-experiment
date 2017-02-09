@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.vangroan.botexperiment.R;
 import com.vangroan.botexperiment.view.enums.BotVMType;
 import com.vangroan.botexperiment.view.viewholder.BotVH;
+import com.vangroan.botexperiment.view.viewholder.InputTextVH;
 import com.vangroan.botexperiment.view.viewholder.TextVH;
 import com.vangroan.botexperiment.view.viewmodel.BotVM;
 
@@ -22,8 +23,9 @@ public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
     private List<BotVM> history = new ArrayList<>();
     private Context context;
+    private OnInputListener listener;
 
-    public BotHistoryAdapter(Context context) {
+    public BotHistoryAdapter(Context context, OnInputListener listener) {
         this.context = context;
     }
 
@@ -40,9 +42,22 @@ public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
             return new TextVH(inflater.inflate(R.layout.item_bot_text, parent, false));
 
         switch (type) {
+
+            ////////////
+            // Output //
+            ////////////
+
+            case TEXT:
             case UNDEFINED:
             default:
                 return new TextVH(inflater.inflate(R.layout.item_bot_text, parent, false));
+
+            ///////////
+            // Input //
+            ///////////
+
+            case INPUT_TEXT:
+                return new InputTextVH(inflater.inflate(R.layout.item_bot_input_text, parent, false));
         }
     }
 
@@ -77,5 +92,13 @@ public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
     public BotVM get(int position) {
         return history.get(position);
+    }
+
+    /////////////////
+    // Input Event //
+    /////////////////
+
+    public static interface OnInputListener {
+        void onInput();
     }
 }

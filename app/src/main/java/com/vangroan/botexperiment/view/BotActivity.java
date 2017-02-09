@@ -14,7 +14,7 @@ import com.vangroan.botexperiment.view.adapter.BotHistoryAdapter;
 import com.vangroan.botexperiment.view.graph.BotResourceLoader;
 import com.vangroan.botexperiment.view.viewmodel.BotVM;
 
-public class BotActivity extends AppCompatActivity {
+public class BotActivity extends AppCompatActivity implements BotHistoryAdapter.OnInputListener {
 
     private BotRunner runner;
 
@@ -24,7 +24,7 @@ public class BotActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bot);
 
         // Conversation History
-        final BotHistoryAdapter conversationAdapter = new BotHistoryAdapter(this);
+        final BotHistoryAdapter conversationAdapter = new BotHistoryAdapter(this, this);
         RecyclerView conversationView = (RecyclerView) findViewById(R.id.activity_bot_conversation);
         conversationView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         conversationView.setAdapter(conversationAdapter);
@@ -52,5 +52,16 @@ public class BotActivity extends AppCompatActivity {
 
         runner.setNode("user_greet_intro");
         runner.setNode("user_greet_ask_name");
+    }
+
+
+    ///////////////////////////////////////
+    // BotHistoryAdapter.OnInputListener //
+    ///////////////////////////////////////
+
+
+    @Override
+    public void onInput() {
+
     }
 }

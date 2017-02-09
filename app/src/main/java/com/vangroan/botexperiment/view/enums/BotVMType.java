@@ -8,8 +8,19 @@ import android.util.SparseArray;
  */
 
 public enum BotVMType {
+
+    ////////////
+    // Output //
+    ////////////
+
     UNDEFINED(-1),
-    TEXT(1);
+    TEXT(100),
+
+    ///////////
+    // Input //
+    ///////////
+
+    INPUT_TEXT(200);
 
 
     private static SparseArray<BotVMType> map = new SparseArray<>();
