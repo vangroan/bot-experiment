@@ -11,7 +11,13 @@
     tools:context="com.vangroan.botexperiment.view.BotActivity">
 
     <android.support.v7.widget.RecyclerView
-        android="@+id/activity_bot_conversation"
+        android:id="@+id/activity_bot_conversation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_bot_quick_answers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

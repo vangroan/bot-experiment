@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.vangroan.botexperiment.graph.BotGraph;
+import com.vangroan.botexperiment.graph.NodeResult;
 import com.vangroan.botexperiment.graph.nodes.BotNode;
 
 /**
@@ -34,7 +35,9 @@ public class BotRunner {
             return;
 
         current = node;
-        node.execute();
+        NodeResult result = node.execute();
+        if (result != null)
+            notifyOnNodeResult(result);
     }
 
     private void reset() {
@@ -55,7 +58,12 @@ public class BotRunner {
             listener.onNode(node);
     }
 
-    private void setListener(@Nullable BotRunnerListener listener) {
+    private void notifyOnNodeResult(@NonNull NodeResult result) {
+        if (listener != null)
+            listener.onNodeExecute(result);
+    }
+
+    public void setListener(@Nullable BotRunnerListener listener) {
         this.listener = listener;
     }
 
@@ -67,5 +75,10 @@ public class BotRunner {
          * @param node The current node of the runner
          */
         void onNode(@NonNull BotNode node);
+
+        /**
+         * Called when a Node executes.
+         */
+        void onNodeExecute(@NonNull NodeResult result);
     }
 }

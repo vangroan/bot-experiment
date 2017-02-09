@@ -1,5 +1,8 @@
 package com.vangroan.botexperiment.graph.nodes;
 
+import android.support.annotation.Nullable;
+
+import com.vangroan.botexperiment.graph.NodeResult;
 import com.vangroan.botexperiment.util.StringHelper;
 
 /**
@@ -41,7 +44,8 @@ public class BotNode {
     // Behaviour //
     ///////////////
 
-    public void execute() {
-
+    @Nullable
+    public NodeResult execute() {
+        return new NodeResult("Hello World");
     }
 }

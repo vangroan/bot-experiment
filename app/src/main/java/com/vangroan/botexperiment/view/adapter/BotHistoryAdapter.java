@@ -1,10 +1,14 @@
 package com.vangroan.botexperiment.view.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.vangroan.botexperiment.R;
 import com.vangroan.botexperiment.view.enums.BotVMType;
 import com.vangroan.botexperiment.view.viewholder.BotVH;
+import com.vangroan.botexperiment.view.viewholder.TextVH;
 import com.vangroan.botexperiment.view.viewmodel.BotVM;
 
 import java.util.ArrayList;
@@ -17,9 +21,10 @@ import java.util.List;
 public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
     private List<BotVM> history = new ArrayList<>();
+    private Context context;
 
-    public BotHistoryAdapter() {
-
+    public BotHistoryAdapter(Context context) {
+        this.context = context;
     }
 
     //////////////////////////
@@ -28,7 +33,17 @@ public class BotHistoryAdapter extends RecyclerView.Adapter<BotVH> {
 
     @Override
     public BotVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        BotVMType type = BotVMType.byKey(viewType);
+
+        if (type == null)
+            return new TextVH(inflater.inflate(R.layout.item_bot_text, parent, false));
+
+        switch (type) {
+            case UNDEFINED:
+            default:
+                return new TextVH(inflater.inflate(R.layout.item_bot_text, parent, false));
+        }
     }
 
     @Override

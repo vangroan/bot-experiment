@@ -14,7 +14,7 @@ public abstract class BotVH<T extends BotVM> extends RecyclerView.ViewHolder {
 
     protected T viewModel;
 
-    public BotVH(View itemView) {
+    BotVH(View itemView) {
         super(itemView);
     }
 
