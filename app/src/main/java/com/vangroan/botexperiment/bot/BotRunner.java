@@ -23,7 +23,11 @@ public class BotRunner {
         this.graph = new BotGraph();
     }
 
-    private void setNode(@NonNull String nodeId) {
+    public BotRunner(BotGraph graph) {
+        this.graph = graph;
+    }
+
+    public void setNode(@NonNull String nodeId) {
         BotNode node = graph.get(nodeId);
 
         if (node == null)
@@ -31,6 +35,15 @@ public class BotRunner {
 
         current = node;
         node.execute();
+    }
+
+    private void reset() {
+        graph = null;
+        current = null;
+    }
+
+    public void setGraph(BotGraph graph) {
+        this.graph = graph;
     }
 
     ////////////////////
