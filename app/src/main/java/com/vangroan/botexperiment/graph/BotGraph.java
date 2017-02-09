@@ -38,7 +38,7 @@ public class BotGraph {
             throw new BotNodeIdExists("Node with name already exists in graph: " + node.hasId());
 
         nodes.add(node);
-        indexes.put(node.toString(), nodes.size() - 1);
+        indexes.put(node.getId(), nodes.size() - 1);
     }
 
     public void addAll(@NonNull Collection<BotNode> nodes) {

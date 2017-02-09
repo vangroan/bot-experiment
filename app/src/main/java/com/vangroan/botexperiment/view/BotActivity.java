@@ -12,6 +12,11 @@ public class BotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bot);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         new BotResourceLoader(this, R.raw.user_greet).load();
     }
