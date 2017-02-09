@@ -1,0 +1,8 @@
+
+# Greets the user
+
+- id: user_greet_intro
+  type: DEFAULT
+
+- id: user_greet_ask_name
+  type: DEFAULT

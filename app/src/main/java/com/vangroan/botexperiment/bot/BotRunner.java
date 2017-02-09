@@ -7,6 +7,8 @@ import com.vangroan.botexperiment.graph.BotGraph;
 import com.vangroan.botexperiment.graph.nodes.BotNode;
 
 /**
+ * Receives input and drives the graph.
+ *
  * Created by Victor on 2017/02/08.
  */
 
@@ -28,6 +30,7 @@ public class BotRunner {
             return;
 
         current = node;
+        node.execute();
     }
 
     ////////////////////

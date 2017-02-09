@@ -7,6 +7,6 @@ package com.vangroan.botexperiment.util;
 public class StringHelper {
 
     public static boolean isEmpty(String text) {
-        return text != null && !text.equals("");
+        return text == null || text.equals("");
     }
 }

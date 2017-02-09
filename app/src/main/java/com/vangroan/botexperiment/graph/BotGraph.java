@@ -8,6 +8,7 @@ import com.vangroan.botexperiment.graph.exceptions.BotNodeIdMissing;
 import com.vangroan.botexperiment.graph.nodes.BotNode;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,10 @@ public class BotGraph {
 
     }
 
+    public BotGraph(Collection<BotNode> nodes) {
+        addAll(nodes);
+    }
+
     public void add(@NonNull BotNode node) {
         if (!node.hasId())
             throw new BotNodeIdMissing("Attempt to add Node to graph with no ID set");
@@ -34,6 +39,12 @@ public class BotGraph {
 
         nodes.add(node);
         indexes.put(node.toString(), nodes.size() - 1);
+    }
+
+    public void addAll(@NonNull Collection<BotNode> nodes) {
+        for (BotNode node : nodes) {
+            add(node);
+        }
     }
 
     @Nullable
