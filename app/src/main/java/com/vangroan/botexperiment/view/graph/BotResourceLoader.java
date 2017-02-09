@@ -1,10 +1,8 @@
 package com.vangroan.botexperiment.view.graph;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.vangroan.botexperiment.graph.BotGraph;
@@ -15,9 +13,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,12 +42,12 @@ public class BotResourceLoader implements BotGraphRepo {
             BufferedReader bufReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
             nodes = mapper.readValue(bufReader, mapper.getTypeFactory().constructParametricType(List.class, BotNode.class));
         } catch (IOException e) {
-
+            return null;
         } finally {
             try {
                 stream.close();
             } catch (IOException e) {
-
+                // Do nothing
             }
         }
 
