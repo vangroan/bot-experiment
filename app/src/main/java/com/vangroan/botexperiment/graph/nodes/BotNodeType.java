@@ -22,7 +22,19 @@ public enum BotNodeType {
         this.id = id;
     }
 
+    ////////
+    // ID //
+    ////////
+
     public int getId() {
         return id;
+    }
+
+    public static BotNodeType byId(int id) {
+        return map.get(id);
+    }
+
+    public static boolean containsId(int id) {
+        return map.get(id) != null;
     }
 }

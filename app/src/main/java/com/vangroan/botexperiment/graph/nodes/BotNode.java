@@ -5,16 +5,18 @@ import android.support.annotation.Nullable;
 import com.vangroan.botexperiment.graph.NodeResult;
 import com.vangroan.botexperiment.util.StringHelper;
 
+import io.realm.RealmObject;
+
 /**
  * BotNode should be stateless.
  *
  * Created by Victor on 2017/02/08.
  */
 
-public class BotNode {
+public class BotNode extends RealmObject {
 
     private String id = "";
-    private BotNodeType type = BotNodeType.DEFAULT;
+    private int botTypeId = BotNodeType.DEFAULT.getId();
 
     ////////
     // ID //
@@ -32,12 +34,12 @@ public class BotNode {
     // Bot Node Type //
     ///////////////////
 
-    public BotNodeType getType() {
-        return type;
+    public BotNodeType getBotType() {
+        return BotNodeType.byId(botTypeId);
     }
 
     public boolean hasType() {
-        return type != null;
+        return BotNodeType.containsId(botTypeId);
     }
 
     ///////////////
